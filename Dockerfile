@@ -5,8 +5,6 @@ RUN rm -rf /usr/share/nginx/html/portfolio-ngoundamroivelfadil-cloud/*
 
 COPY . /usr/share/nginx/html/portfolio-ngoundamroivelfadil-cloud/
 
-RUN sed -i 's|root   /usr/share/nginx/html;|root   /usr/share/nginx/html/portfolio-ngoundamroivelfadil-cloud;|g' /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
