@@ -1,14 +1,12 @@
 FROM propentatech/portfolios-formation-dev-web2026:latest
 
-# Supprimer la config par défaut (optionnel)
-RUN mkdir /usr/share/nginx/html/portfolio-ngoundamroivelfadil-cloud/
+RUN mkdir -p /usr/share/nginx/html/portfolio-ngoundamroivelfadil-cloud/
 RUN rm -rf /usr/share/nginx/html/portfolio-ngoundamroivelfadil-cloud/*
 
-# Copier ton site
 COPY . /usr/share/nginx/html/portfolio-ngoundamroivelfadil-cloud/
 
-# Exposer le port
+RUN sed -i 's|root   /usr/share/nginx/html;|root   /usr/share/nginx/html/portfolio-ngoundamroivelfadil-cloud;|g' /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
-# Lancer nginx
 CMD ["nginx", "-g", "daemon off;"]
